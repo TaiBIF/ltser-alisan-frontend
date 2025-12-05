@@ -12,9 +12,6 @@ import { LoginViewSchema } from "../../data/schema";
 // helpers
 import { swalToast } from "../../helpers/CustomSwal";
 
-// components
-import Spinner from "../Spinner";
-
 type PopupView = "login" | "register" | "forgot";
 
 interface LoginViewProps {
