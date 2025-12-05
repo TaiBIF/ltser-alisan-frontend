@@ -5,9 +5,9 @@ const API_BASE = ENV.apiBaseUrl;
 export const API = {
     // 認證
     auth: {
-        login: `${API_BASE}/account/auth/token/`,
-        googleLogin: `${API_BASE}/auth/google-login/`,
         register: `${API_BASE}/account/register/`,
+        login: `${API_BASE}/account/auth/token/`,
+        googleLogin: `${API_BASE}/account/auth/google-login/`,
         refresh: `${API_BASE}/account/auth/token/refresh/`,
     },
 
