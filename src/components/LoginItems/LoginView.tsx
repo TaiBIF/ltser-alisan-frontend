@@ -1,6 +1,7 @@
 import type { Dispatch, SetStateAction } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { API } from "../../config/api";
+import { ENV } from "../../config/env";
 
 // context
 import { useAuth } from "../../context/AuthContext";
@@ -33,6 +34,83 @@ function decodeExp(jwt: string): number | null {
 
 const LoginView = ({ onSuccess, setIsLoginOpen, setView }: LoginViewProps) => {
     const { login } = useAuth();
+
+    const handleGoogleLogin = () => {
+        // @ts-ignore
+        const google = window.google;
+
+        if (!google) {
+            swalToast.fire({ icon: "error", title: "Google 登入服務尚未載入" });
+            return;
+        }
+
+        google.accounts.id.initialize({
+            client_id: ENV.googleClientId,
+            callback: async (response: any) => {
+                const credential = response.credential;
+
+                if (!credential) {
+                    swalToast.fire({
+                        icon: "error",
+                        title: "無法取得 Google 認證資訊",
+                    });
+                    return;
+                }
+
+                try {
+                    const res = await fetch(API.auth.googleLogin, {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({ credential }),
+                    });
+
+                    const data = await res.json().catch(() => ({}));
+
+                    if (res.ok) {
+                        const { access, refresh } = data;
+
+                        if (!access || !refresh) {
+                            throw new Error("Invalid token response");
+                        }
+
+                        login(access, refresh);
+
+                        const accessExp = decodeExp(access);
+                        localStorage.setItem("accessToken", access);
+                        localStorage.setItem("refreshToken", refresh);
+                        if (accessExp)
+                            localStorage.setItem(
+                                "accessExp",
+                                String(accessExp)
+                            );
+
+                        swalToast.fire({
+                            icon: "success",
+                            title: "Google 登入成功",
+                        });
+
+                        setIsLoginOpen(false);
+                        onSuccess?.();
+                    } else {
+                        swalToast.fire({
+                            icon: "error",
+                            title: data.detail || "Google 登入失敗，請稍後再試",
+                        });
+                    }
+                } catch (e) {
+                    console.error(e);
+                    swalToast.fire({
+                        icon: "error",
+                        title: "伺服器錯誤，請稍後再試",
+                    });
+                }
+            },
+        });
+
+        // 顯示 Google 選帳號視窗
+        google.accounts.id.prompt();
+    };
+
     return (
         <Formik
             initialValues={{ email: "", password: "" }}
@@ -147,7 +225,7 @@ const LoginView = ({ onSuccess, setIsLoginOpen, setView }: LoginViewProps) => {
                                 <button
                                     className="logingoogle"
                                     type="button"
-                                    onClick={() => alert("Google Login TODO")}
+                                    onClick={handleGoogleLogin}
                                 >
                                     使用GOOGLE登入
                                 </button>

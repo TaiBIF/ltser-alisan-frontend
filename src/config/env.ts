@@ -6,4 +6,5 @@ const required = (key: keyof ImportMetaEnv): string => {
 
 export const ENV = {
     apiBaseUrl: required("VITE_API_BASE_URL"),
+    googleClientId: required("VITE_GOOGLE_CLIENT_ID"),
 };
