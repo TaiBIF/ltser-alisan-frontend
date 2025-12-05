@@ -224,8 +224,16 @@ const LoginView = ({ onSuccess, setIsLoginOpen, setView }: LoginViewProps) => {
                                     type="button"
                                     onClick={handleGoogleLogin}
                                 >
-                                    使用GOOGLE登入
+                                    使用 Google 登入
                                 </button>
+                            </div>
+
+                            <div className="login-tip">
+                                如果按下「使用 Google 登入」沒有反應，
+                                <br />
+                                可能是瀏覽器阻擋了第三方登入（FedCM）或正在使用無痕視窗。
+                                <br />
+                                請改用一般視窗、檢查瀏覽器網站設定，或改用帳號密碼登入。
                             </div>
 
                             <div className="btn-area2">

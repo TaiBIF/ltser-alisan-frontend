@@ -7,9 +7,6 @@ import { ForgotViewSchema } from "../../data/schema";
 // helpers
 import { swalToast } from "../../helpers/CustomSwal";
 
-// components
-import Spinner from "../Spinner";
-
 type PopupView = "login" | "register" | "forgot";
 
 interface ForgotViewProps {
@@ -85,7 +82,7 @@ const ForgotView = ({ setView }: ForgotViewProps) => {
                                     type="submit"
                                     disabled={isSubmitting}
                                 >
-                                    {isSubmitting ? <Spinner /> : "確認送出"}
+                                    確認送出
                                 </button>
                             </div>
 

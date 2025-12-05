@@ -8,9 +8,6 @@ import { swalToast } from "../../helpers/CustomSwal";
 // data
 import { RegisterViewSchema } from "../../data/schema";
 
-// components
-import Spinner from "../Spinner";
-
 type PopupView = "login" | "register" | "forgot";
 
 interface RegisterViewProps {
@@ -125,7 +122,7 @@ const RegisterView = ({ setView }: RegisterViewProps) => {
                             type="submit"
                             disabled={isSubmitting}
                         >
-                            {isSubmitting ? <Spinner /> : "註冊"}
+                            {isSubmitting ? "註冊中" : "註冊"}
                         </button>
                     </div>
 
