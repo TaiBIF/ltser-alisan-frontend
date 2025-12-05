@@ -3,34 +3,34 @@ const Footer = () => {
         <footer>
             <div className="topline"></div>
             <div className="logo-areabox">
-                <a href="#">
-                    <img src="/ftlogo1.png" width="348px" />
+                <a href="https://www.nstc.gov.tw/" target="_blank">
+                    <img src="/ftlogo1.png" width="348px" alt="國科會" />
                 </a>
             </div>
             <div className="logo-areabox">
-                <a href="#">
-                    <img src="/ftlogo2.png" />
+                <a href="https://wp.npust.edu.tw/" target="_blank">
+                    <img src="/ftlogo2.png" alt="國立屏東科技大學" />
                 </a>
-                <a href="#">
-                    <img src="/ftlogo4.png" />
+                <a href="https://www.ncyu.edu.tw/" target="_blank">
+                    <img src="/ftlogo4.png" alt="國立嘉義大學" />
                 </a>
-                <a href="#">
-                    <img src="/ftlogo3.png" />
+                <a href="https://www.nthu.edu.tw/" target="_blank">
+                    <img src="/ftlogo3.png" alt="國立清華大學" />
                 </a>
-                <a href="#">
-                    <img src="/ftlogo5.png" />
+                <a href="https://www.ntu.edu.tw/" target="_blank">
+                    <img src="/ftlogo5.png" alt="國立臺灣大學" />
                 </a>
-                <a href="#">
-                    <img src="/ftlogo6.png" />
+                <a href="https://www.ndhu.edu.tw/" target="_blank">
+                    <img src="/ftlogo6.png" alt="國立東華大學" />
                 </a>
-                <a href="#">
-                    <img src="/ftlogo11.png" />
+                <a href="https://www.sinica.edu.tw/" target="_blank">
+                    <img src="/ftlogo11.png" alt="中央研究院" />
                 </a>
-                <a href="#">
-                    <img src="/ftlogo7.png" />
+                <a href="https://www.niu.edu.tw/" target="_blank">
+                    <img src="/ftlogo7.png" alt="國立宜蘭大學" />
                 </a>
-                <a href="#">
-                    <img src="/ftlogo9.png" />
+                <a href="https://new.ntpu.edu.tw/" target="_blank">
+                    <img src="/ftlogo9.png" alt="國立臺北大學" />
                 </a>
             </div>
             <div className="footer-topbox">
